@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Counter from "./Components/Counter/Counter";
 import Toggle from "./Components/Toggle/Toggle";
@@ -13,31 +13,30 @@ export default function App() {
 
   const handleToggleTheme = () => setIsDark((darkmode) => !darkmode);
 
-  const appStyle = {
-    padding: 24,
-    fontFamily: "system-ui",
-    minHeight: "100vh",
-    backgroundColor: isDark ? "#111" : "#fff",
-    color: isDark ? "#fff" : "#111",
-  };
+  const title = count === 0 ? "Click Counter" : `Klik: ${count}`;
+
+  useEffect(() => {
+    console.log("count ændrede sig:", count, "-> title:", title);
+    document.title = title;
+  }, [count]);
 
   return (
-  <div className={isDark ? "app dark" : "app"}>
-    <div className="page">
-      <h1>Click Counter</h1>
+    <div className={isDark ? "app dark" : "app"}>
+      <div className="page">
+        <h1>{title}</h1>
 
-      <DarkLightMode isDark={isDark} onToggle={handleToggleTheme} />
+        <DarkLightMode isDark={isDark} onToggle={handleToggleTheme} />
 
-      <Counter
-        count={count}
-        onIncrement={handleIncrement}
-        onReset={handleReset}
-      />
+        <Counter
+          count={count}
+          onIncrement={handleIncrement}
+          onReset={handleReset}
+        />
 
-      {count > 10 && <p>du har klikket 10 gange</p>}
+        {count > 10 && <p>du har klikket 10 gange</p>}
 
-      <Toggle />
+        <Toggle />
+      </div>
     </div>
-  </div>
-);
+  );
 }
