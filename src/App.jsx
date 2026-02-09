@@ -5,7 +5,7 @@ import Counter from './Components/Counter/Counter';
 export default function App() {
   const [count, setCount] = useState(0);
 
-  const handleIncrement = () => setCount((c)=> c+ 1);
+  const handleIncrement = () => setCount((counter)=> counter + 1);
   const handleReset = () => setCount(0);
 
   return (
