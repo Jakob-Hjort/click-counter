@@ -13,12 +13,20 @@ export default function App() {
 
   const handleToggleTheme = () => setIsDark((darkmode) => !darkmode);
 
+  const welcomeMessage = () => {
+    console.log("Velkommen! Appen er nu loaded");
+  };
+
   const title = count === 0 ? "Click Counter" : `Klik: ${count}`;
 
   useEffect(() => {
     console.log("count ændrede sig:", count, "-> title:", title);
     document.title = title;
   }, [count]);
+
+  useEffect(() => {
+    welcomeMessage();
+  }, []);
 
   return (
     <div className={isDark ? "app dark" : "app"}>
