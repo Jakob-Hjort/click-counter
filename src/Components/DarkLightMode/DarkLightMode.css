@@ -1,0 +1,10 @@
+.dlmButton {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #999;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
